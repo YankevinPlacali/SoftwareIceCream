@@ -42,7 +42,7 @@ public class UpdateStation extends JPanel implements CurrentStationInterface {
 
 	public UpdateStation() {
 		this.id.setEditable(false);
-		this.target.setEditable(false);
+        this.target.setEditable(false);
 		this.setLayout(new GridLayout(4, 2));
 		this.add(labelId);
 		this.add(id);

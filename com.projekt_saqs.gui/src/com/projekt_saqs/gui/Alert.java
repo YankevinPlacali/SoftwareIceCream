@@ -19,7 +19,8 @@ public class Alert extends JLabel implements AlertViewInterface {
         if (oldStation == null)
             this.setText("Die Station " + newStation.getIdStation() + " wurde hinzugefügt.");
         else
-            this.setText("<html>" + " <span color=\"green\">Id: " + newStation.getIdStation() + ", Date: " + newStation.dateToString() + ", Target: " + newStation.getTarget() + "</span><br></html>");
+            this.setText("<html> Die Varianz wurde für folgende Station berechnet.<br>" + " <span color=\"green\">Id: " + newStation.getIdStation() + ", Date: " + newStation.dateToString()
+                    + ", Target: " + newStation.getTarget() + "</span><br></html>");
     }
 
 }

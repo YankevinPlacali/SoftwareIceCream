@@ -38,8 +38,6 @@ public class AdminView extends JPanel {
     private JButton calculate;
     private Thread t;
     private StationBuilder ss;
-    float u_target;
-    float u_actual;
     VarianzBerechnung vb;
 
     public AdminView() {
@@ -52,6 +50,7 @@ public class AdminView extends JPanel {
         InfoUpdateModel uim_vb = vb;
         InfoUpdateInterface uii = new NewStationInfoPresenter(uim_ss, uim_vb);
         this.us = new UpdateStation(uii);
+        us.getTarget().setEditable(true);
         us.getActual().setBounds(138, 45, 138, 15);
         us.getLabelActual().setBounds(20, 45, 118, 15);
         us.getTarget().setBounds(138, 30, 138, 15);
@@ -108,7 +107,7 @@ public class AdminView extends JPanel {
             @Override
             public void mouseClicked(MouseEvent e) {
                 calculateVariance();
-                buildDiagram();
+                //                buildDiagram();
             }
 
             @Override
@@ -200,7 +199,7 @@ public class AdminView extends JPanel {
             @Override
             public void mouseClicked(MouseEvent e) {
                 calculateVariance();
-                buildDiagram();
+                //                buildDiagram();
             }
 
             @Override
@@ -321,8 +320,8 @@ public class AdminView extends JPanel {
                     @SuppressWarnings("deprecation")
                     Date u_date = new Date(annee, mois - 1, jour); //mois - 1 parce que le mois est represente de 0 a 11 dans le system
                     String u_id = getThis().getUs().getId().getText();
-                    u_target = Float.parseFloat(getThis().getUs().getTarget().getText());
-                    u_actual = Float.parseFloat(getThis().getUs().getActual().getText());
+                    float u_target = Float.parseFloat(getThis().getUs().getTarget().getText());
+                    float u_actual = Float.parseFloat(getThis().getUs().getActual().getText());
 
                     Info info = new Info(u_id, u_date, u_target, u_actual);
 
@@ -336,7 +335,7 @@ public class AdminView extends JPanel {
         String categoryAxisLabel = "Target";
         String valueAxisLabel = "Aktueller Wert";
         DefaultCategoryDataset valueDiagram = new DefaultCategoryDataset();
-        setValueForDiagram(valueDiagram, vb.getVariance(), u_actual, u_target);
+        //        setValueForDiagram(valueDiagram, vb.getVariance(), u_actual, u_target);
         JFreeChart diagramm = ChartFactory.createLineChart("Varianz Diagramm", categoryAxisLabel, valueAxisLabel, valueDiagram);
         CategoryPlot plot = diagramm.getCategoryPlot();
         plot.setRangeGridlinePaint(Color.BLACK);
